@@ -1,5 +1,5 @@
 import { css } from '@emotion/core';
-import { COLORS } from '../shared/theme';
+import { BASE_UNIT } from '../shared/theme';
 
 export const globalStyles = css`
   *,
@@ -13,12 +13,23 @@ export const globalStyles = css`
     font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,noto sans,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol,noto color emoji;
   }
 
-  ${Object.entries(COLORS).map(([name, variants]) => {
-    return `
-      .${name.toLocaleLowerCase()}--text {
-        color: ${variants[5]};
-      }
-    `;
-  })}
+  .mr-2 {
+    margin-right: ${BASE_UNIT * 2}px;
+  }
 
+  .ml-2 {
+    margin-left: ${BASE_UNIT * 2}px;
+  }
+
+  .d-flex {
+    display: flex;
+  }
+
+  .flex-1 {
+    flex: 1 0 auto;
+  }
+
+  .justify-space-between {
+    justify-content: space-between;
+  }
 `;
