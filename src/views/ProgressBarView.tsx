@@ -1,11 +1,7 @@
 import React from 'react';
 import BasicLayout from '../components/BasicLayout';
 
-interface ProgressBarViewProps {
-
-}
-
-const ProgressBarView = ({}: ProgressBarViewProps) => {
+const ProgressBarView = () => {
 
     return (
         <BasicLayout title="Progress Bar Demo">
