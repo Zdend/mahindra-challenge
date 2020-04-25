@@ -1,6 +1,6 @@
 import { ProgressBarResponse } from '../types/progress';
 
-const PROGRESS_BAR_ENDPOINT = `${location.protocol}//pb-api.herokuapp.com/bars`;
+const PROGRESS_BAR_ENDPOINT = `${window.location.protocol}//pb-api.herokuapp.com/bars`;
 
 export const fetchProgressBars = async (): Promise<ProgressBarResponse | null> => {
     try {
