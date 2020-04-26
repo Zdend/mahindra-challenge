@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { BASE_UNIT } from '../../shared/theme';
+import { BASE_UNIT, COLORS } from '../../shared/theme';
 
 const SelectStyled = styled.select`
     width: 100%;
     min-width: 150px;
     max-width: 400px;
     height: ${BASE_UNIT * 9}px;
+    border: 2px solid ${COLORS.PRIMARY};
 `;
 
 interface SelectItem {
@@ -27,6 +28,7 @@ const Select = ({
 }: SelectProps) => {
     return (
         <SelectStyled 
+            data-testid="select"
             value={value} 
             onChange={(e) => onChange(e.target.value)}
         >

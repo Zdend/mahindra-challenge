@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { fetchProgressBars } from "../api/progress";
-import { ProgressBarResponse } from "../types/progress";
+import { useEffect, useState } from 'react';
+import { fetchProgressBars } from '../api/progress';
+import { ProgressBarResponse } from '../types/progress';
 
 interface ProgressBarData {
     loading: boolean;

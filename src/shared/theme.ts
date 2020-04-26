@@ -1,4 +1,5 @@
 export const COLORS = {
+  ACCENT: '#fdcc08',
   PRIMARY: '#00a4ad',
   PRIMARY_DARKEN_1: '#00949c',
   PRIMARY_DARKEN_2: '#00838a',

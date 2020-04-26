@@ -13,7 +13,9 @@ const ProgressBarGroup = () => {
     const setDelta = useCallback((delta) => {
         const newBars = progressBars.map((_, barIndex) => {
             const currentProgress = progressBars[barIndex] || 0;
-            return `${barIndex}` === selectedProgressBar ? range(currentProgress + delta, 0, data.limit) : currentProgress;
+            return `${barIndex}` === selectedProgressBar 
+                ? range(currentProgress + delta, 0, data.limit) 
+                : currentProgress;
         });
         setProgressBars(newBars);
     }, [progressBars, setProgressBars, selectedProgressBar, data]);
@@ -26,20 +28,23 @@ const ProgressBarGroup = () => {
 
 
     if (loading) {
-        return <div>Loading progress bars...</div>
+        return <div data-testid="progress-bar-group__loading">Loading progress bars...</div>
     }
 
-    if (!data || !progressBars) {
+    if (!data) {
         return <div>Data could not be fetched!</div>
     }
 
+    const limitReached = progressBars.some(bar => bar === data.limit);
+
     return (
-        <div>
+        <div data-testid="progress-bar-group__data">
             <div>
-                {progressBars.map((bar, index) => (
+                {progressBars.map((_, index) => (
                     <ProgressBar 
                         key={index} 
                         value={progressBars[index]} 
+                        max={data.limit}
                     />
                 ))}
             </div>
@@ -53,10 +58,17 @@ const ProgressBarGroup = () => {
                 </div>
                 <div>
                     {data.buttons.map((delta, index) => (
-                        <Btn key={index} className="ml-2" onClick={() => setDelta(delta)}>{delta}</Btn>
+                        <Btn 
+                            key={index} 
+                            className="ml-2" 
+                            onClick={() => setDelta(delta)}
+                            data-testid="progress-bar-group__delta-btn">
+                                {delta}
+                            </Btn>
                     ))}
                 </div>
             </div>
+            {limitReached && <h2>Limit {data.limit} reached!</h2>}
         </div>
     );
 };
